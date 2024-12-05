@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
+import styles from '../styles/AvatarEditor.css'
 
 const AvatarEditor = () => {
   // State hooks for each part of the avatar
   const [bottom, setBottom] = useState('none');
   const [top, setTop] = useState('none');
+  const [feet, setFeet] = useState('none');
+  const [weapon, setWeapon] = useState('none');
 
 
   // Options for each category
   const pantsOptions = ['none', 'bottoms_basic.png', 'bottoms_armored.png'];
   const shirtOptions = ['none', 'tops_basic.png', 'tops_leather.png'];
-
+  const feetOptions = ['none', 'feet_basic.png', 'feet_armored.png']
+  const weaponOptions = ['none', 'weapons_sword_basic.png', 'weapons_sword_red.png']
 
   return (
     <div className="avatar-editor">
@@ -23,6 +27,14 @@ const AvatarEditor = () => {
           alt="body"
           className="avatar-part body"
         />
+
+        {feet !== 'none' && (
+        <img
+          src={`/assets/feet/${feet}`}
+          alt="feet"
+          className="avatar-part feet"
+        />
+        )}
 
         {bottom !== 'none' && (
         <img
@@ -39,75 +51,51 @@ const AvatarEditor = () => {
           className="avatar-part top"
         />
         )}
+
+        {weapon !== 'none' && (
+        <img
+          src={`/assets/weapons/${weapon}`}
+          alt="weapon"
+          className="avatar-part weapon"
+        />
+        )}
       </div>
 
       {/* Controls for customization */}
       <div className="controls">
 
+        {/* Top Selection */}
         <h3>Select Shirt</h3>
         {shirtOptions.map((option) => (
           <button key={option} onClick={() => setTop(option)}>
             {option.replace('.png', '')}
           </button>
         ))}
+
+        {/*Bottoms Selection */}
         <h3>Select Pants</h3>
         {pantsOptions.map((option) => (
           <button key={option} onClick={() => setBottom(option)}>
             {option.replace('.png', '')}
           </button>
         ))}
+
+        {/*Boots Selectiion*/}
+        <h3>Select Boots</h3>
+        {feetOptions.map((option) => (
+          <button key={option} onClick={() => setFeet(option)}>
+          {option.replace('.png', '')}
+        </button>
+        ))}
+
+        {/*Weapon Selectiion*/}
+        <h3>Select Weapon</h3>
+        {weaponOptions.map((option) => (
+          <button key={option} onClick={() => setWeapon(option)}>
+          {option.replace('.png', '')}
+        </button>
+        ))}
       </div>
-
-      <style jsx>{`
-        .avatar-display {
-          position: relative;
-          width: 200px;
-          height: 400px;
-        }
-
-        .avatar-part {
-          position: absolute;
-          width: 100%;
-          height: auto;
-        }
-
-        .pants {
-          bottom: 0;
-        }
-
-        .shirt {
-          bottom: 50px;
-        }
-
-        .weapon {
-          bottom: 120px;
-          left: 50%;
-          transform: translateX(-50%);
-        }
-
-        .hat {
-          top: 0;
-          left: 50%;
-          transform: translateX(-50%);
-        }
-
-        .controls {
-          margin-top: 20px;
-        }
-
-        button {
-          margin: 5px;
-          padding: 10px;
-          background-color: #4caf50;
-          color: white;
-          border: none;
-          cursor: pointer;
-        }
-
-        button:hover {
-          background-color: #45a049;
-        }
-      `}</style>
     </div>
   );
 };

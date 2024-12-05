@@ -1,0 +1,28 @@
+.avatar-display {
+  position: relative;
+  width: 200px;
+  height: 400px;
+}
+
+.avatar-part {
+  position: absolute;
+  width: 100%;
+  height: auto;
+}
+
+.controls {
+  margin-top: 20px;
+}
+
+button {
+  margin: 5px;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
