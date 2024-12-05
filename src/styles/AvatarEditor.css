@@ -1,7 +1,11 @@
+.avatar-editor {
+  margin-left: 50px;
+}
+
 .avatar-display {
   position: relative;
   width: 200px;
-  height: 400px;
+  height: 275px;
 }
 
 .avatar-part {
